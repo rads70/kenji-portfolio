@@ -49,7 +49,7 @@ export default function Navbar() {
                      <NavLink
                         href={link.link}
                         label={link.label}
-                        key={link.link}
+                        key={link.label}
                      />
                   ))}
                </div>
@@ -76,6 +76,7 @@ export default function Navbar() {
                      label={link.label}
                      classes='mb-2'
                      onClick={handleLinkClick}
+                     key={link.label}
                   />
                ))}
             </nav>

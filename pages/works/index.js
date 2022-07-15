@@ -17,7 +17,7 @@ export default function Works({ works }) {
             <div className='grid grid-cols-2 md:grid-cols-3 gap-3 justify-items-center'>
                {works?.map((work) => (
                   <div className='max-w-xl bg-white'>
-                     <Link href={`/works/${work.slug.current}`}>
+                     <Link href={`/works/${work.slug.current}`} key={work._id}>
                         <a className='  '>
                            {work && (
                               <img

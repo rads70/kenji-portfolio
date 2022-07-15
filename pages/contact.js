@@ -3,7 +3,7 @@ import { BsInstagram } from "react-icons/bs";
 
 export default function Contact() {
    return (
-      <div className='bg-secondary h-full'>
+      <div className='bg-secondary  min-h-full'>
          <Image src='/images/contact.jpg' layout='fill' objectFit='cover' />
          <div className='absolute top-1/3 right-1/3 text-right'>
             <h1 className='text-white text-3xl text font-normal mb-10 '>

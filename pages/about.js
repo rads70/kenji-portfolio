@@ -108,7 +108,10 @@ export default function About({ works }) {
                <div className='flex  gap-4 justify-center  h-full w-full bg-secondary pb-24 text-secondary text-lg p-4'>
                   <div className='columns-1 md:columns-2 lg:columns-3  text-center'>
                      {works?.map((work) => (
-                        <p className='w-96'>{`${work.title} - ${work.year}`}</p>
+                        <p
+                           className='w-96'
+                           key={work.title}
+                        >{`${work.title} - ${work.year}`}</p>
                      ))}
                   </div>
                </div>
