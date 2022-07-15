@@ -80,8 +80,14 @@ export default function Page({ data, preview }) {
                      showStatus={false}
                   >
                      {page?.carouselImages.map((image) => (
-                        <div className='h-[300px] md:h-[600px]'>
-                           <img src={urlFor(image).height(600).url()} />
+                        <div
+                           className='h-[300px] md:h-[600px]'
+                           key={image._key}
+                        >
+                           <img
+                              src={urlFor(image).height(600).url()}
+                              alt={image.alt || ""}
+                           />
                         </div>
                      ))}
                   </Carousel>
@@ -106,8 +112,12 @@ export default function Page({ data, preview }) {
 
             {page?.otherImages && (
                <div className='grid gap-4 grid-cols-2 md:grid-cols-3 mx-auto justify-items-center my-24'>
-                  {page?.otherImages.images.map((image) => (
-                     <img src={urlFor(image).height(400).url()} />
+                  {page?.otherImages?.images.map((image, index) => (
+                     <img
+                        src={urlFor(image).height(400).url()}
+                        alt={image.alt || ""}
+                        key={index}
+                     />
                   ))}
                </div>
             )}

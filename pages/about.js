@@ -12,6 +12,7 @@ export default function About({ works }) {
                      width={500}
                      height={800}
                      objectFit='cover'
+                     alt='Kenjie wilkie'
                   />
                </div>
 
@@ -99,6 +100,7 @@ export default function About({ works }) {
                         width={800}
                         height={600}
                         objectFit='cover'
+                        alt='Kenji Wilkie'
                      />
                   </div>
                </div>

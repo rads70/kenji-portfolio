@@ -16,19 +16,19 @@ export default function Navbar() {
 
    const links = [
       {
-         link: "works",
+         link: "/works",
          label: "Works",
       },
       {
-         link: "process",
+         link: "/process",
          label: "Process",
       },
       {
-         link: "about",
+         link: "/about",
          label: "About",
       },
       {
-         link: "contact",
+         link: "/contact",
          label: "Contact",
       },
    ];

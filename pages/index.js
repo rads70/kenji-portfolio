@@ -22,7 +22,12 @@ export default function Home() {
                   Your browser does not support the video tag
                </video>
                <div className='animate-fadeIn'>
-                  <Image src='/images/Logo.png' width={210} height={60} />
+                  <Image
+                     src='/images/Logo.png'
+                     width={210}
+                     height={60}
+                     alt='Kenji Wilkie Choreography'
+                  />
                </div>
             </header>
          </div>
