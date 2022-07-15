@@ -84,10 +84,7 @@ export default function Page({ data, preview }) {
                            className='h-[300px] md:h-[600px]'
                            key={image._key}
                         >
-                           <img
-                              src={urlFor(image).height(600).url()}
-                              alt={image.alt || ""}
-                           />
+                           <img src={urlFor(image).height(600).url()} alt='' />
                         </div>
                      ))}
                   </Carousel>
@@ -115,7 +112,7 @@ export default function Page({ data, preview }) {
                   {page?.otherImages?.images.map((image, index) => (
                      <img
                         src={urlFor(image).height(400).url()}
-                        alt={image.alt || ""}
+                        alt=''
                         key={index}
                      />
                   ))}
