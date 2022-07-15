@@ -135,7 +135,7 @@ function filterDataToSingleItem(data, preview) {
 }
 
 export async function getStaticPaths() {
-   const allSlugsQuery = groq`*[defined(slug.current)][].slug.current`;
+   const allSlugsQuery = groq`*[_type == 'works'][].slug.current`;
    const pages = await getClient().fetch(allSlugsQuery);
 
    return {
