@@ -10,6 +10,28 @@ export default function Navbar() {
    const handleClick = () => {
       setToggleMenu(!toggleMenu);
    };
+   const handleLinkClick = () => {
+      setToggleMenu(false);
+   };
+
+   const links = [
+      {
+         link: "works",
+         label: "Works",
+      },
+      {
+         link: "process",
+         label: "Process",
+      },
+      {
+         link: "about",
+         label: "About",
+      },
+      {
+         link: "contact",
+         label: "Contact",
+      },
+   ];
    return (
       <div className='z-30 min-w-full absolute top-0 left-0 '>
          <div className='container mx-auto flex items-center justify-between  bg-transparent px-4 h-32'>
@@ -23,10 +45,13 @@ export default function Navbar() {
 
             <nav className=' text-lg text-white tracking-wider font-semibold md:flex items-center '>
                <div className='hidden md:block'>
-                  <NavLink href='/works' label='Works' />
-                  <NavLink href='/process' label='Process' />
-                  <NavLink href='/about' label='About' />
-                  <NavLink href='/contact' label='Contact' />
+                  {links.map((link) => (
+                     <NavLink
+                        href={link.link}
+                        label={link.label}
+                        key={link.link}
+                     />
+                  ))}
                </div>
                <span className='text-2xl md:hidden' onClick={handleClick}>
                   <MdOutlineMenu />
@@ -45,10 +70,14 @@ export default function Navbar() {
                &times;
             </div>
             <nav className='flex flex-col  text-white mt-10 text-lg font-semibold pl-5'>
-               <NavLink href='/works' label='Works' classes='mb-2' />
-               <NavLink href='/process' label='Process' classes='mb-2' />
-               <NavLink href='/about' label='About' classes='mb-2' />
-               <NavLink href='/contact' label='Contact' classes='mb-2' />
+               {links.map((link) => (
+                  <NavLink
+                     href={link.link}
+                     label={link.label}
+                     classes='mb-2'
+                     onClick={handleLinkClick}
+                  />
+               ))}
             </nav>
          </div>
       </div>

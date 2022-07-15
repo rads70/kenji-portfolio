@@ -1,11 +1,9 @@
 import Link from "next/link";
-import Footer from "../../components/Footer";
-import Navbar from "../../components/Navbar";
 import urlFor from "../../lib/imageBuilder";
 import { getClient } from "../../lib/sanity.server";
 
 export async function getStaticProps() {
-   const works = await getClient().fetch(`*[_type=="work"]`);
+   const works = await getClient().fetch(`*[_type=="works"]`);
 
    return {
       props: { works },
@@ -23,7 +21,10 @@ export default function Works({ works }) {
                         <a className='  '>
                            {work && (
                               <img
-                                 src={urlFor(work.mainImage).width(600).url()}
+                                 src={urlFor(work.mainImage)
+                                    .width(600)
+                                    .height(600)
+                                    .url()}
                                  className='object-cover hover:scale-105 transition ease-in-out duration-500'
                               />
                            )}

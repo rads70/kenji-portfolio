@@ -25,7 +25,6 @@ export default function Home() {
                   <Image src='/images/Logo.png' width={210} height={60} />
                </div>
             </header>
-            <div className='h-8'></div>
          </div>
       </div>
    );

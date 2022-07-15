@@ -19,14 +19,14 @@ a {
    box-sizing: border-box;
 }
 
-.main {
-   padding-top: 0px;
-}
 .bg-primary {
    @apply bg-neutral-900;
 }
 .bg-secondary {
    @apply bg-zinc-400;
+}
+.text-secondary {
+   @apply text-neutral-600;
 }
 
 @media screen and (max-width: 640px) {

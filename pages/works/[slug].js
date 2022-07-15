@@ -4,8 +4,9 @@ import { groq } from "next-sanity";
 import { usePreviewSubscription } from "../../lib/sanity";
 import { getClient } from "../../lib/sanity.server";
 import { PortableText } from "@portabletext/react";
+import { Carousel } from "react-responsive-carousel";
 import urlFor from "../../lib/imageBuilder";
-import Navbar from "../../components/Navbar";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 export default function Page({ data, preview }) {
    const [loaded, setLoaded] = useState(false);
@@ -29,22 +30,26 @@ export default function Page({ data, preview }) {
          h1: ({ children }) => <h1 className='text-3xl'>{children}</h1>,
          h2: ({ children }) => <h1 className='text-2xl'>{children}</h1>,
 
-         h6: ({ children }) => <h6 className='text-xs'>{children}</h6>,
+         h6: ({ children }) => (
+            <h6 className='text-sm mb-4 opacity-1'>{children}</h6>
+         ),
          normal: ({ children }) => (
-            <p className='text-base leading-6'>{children}</p>
+            <p className='text-lg leading-6 mb-8'>{children}</p>
          ),
          blockquote: ({ children }) => (
-            <blockquote className=' text-xl leading-7'>{children}</blockquote>
+            <blockquote className=' text-xl leading-7 mb-6'>
+               {children}
+            </blockquote>
          ),
       },
    };
 
    return (
-      <div className='relative bg-primary min-h-screen'>
-         <main className={`pt-32  mx-auto text-slate-300 container p-4`}>
-            {page?.videoLink && (
-               <div className='relative '>
-                  <div className='relative flex justify-center items-center h-[350px] md:h-[650px] overflow-hidden'>
+      <div className='relative bg-black min-h-full'>
+         <main className={`pt-32  mx-auto text-white container p-4`}>
+            {page?.videoLink ? (
+               <div className='relative mb-12 md:mb-24'>
+                  <div className='relative flex justify-center items-center h-[350px] md:h-[700px] overflow-hidden'>
                      <video
                         autoPlay
                         loop
@@ -57,12 +62,31 @@ export default function Page({ data, preview }) {
                         <source src={page.videoLink} />
                         Your browser does not support the video tag
                      </video>
+                     <div className='animate-fadeIn'>
+                        <h1 className='text-white text-3xl'>{page?.title}</h1>
+                     </div>
                   </div>
                </div>
+            ) : (
+               <div className='md:mt-24'></div>
             )}
-            <div className='flex flex-col-reverse md:flex-row mt-12'>
-               <div className='md:w-2/3'>Picture</div>
-               <div className='md:w-1/2'>
+            <div className='flex flex-col-reverse md:flex-row mt-4 gap-10'>
+               <div className='md:w-3/4 h-max'>
+                  <Carousel
+                     autoPlay={true}
+                     infiniteLoop={true}
+                     interval={3000}
+                     showThumbs={false}
+                     showStatus={false}
+                  >
+                     {page?.carouselImages.map((image) => (
+                        <div className='h-[300px] md:h-[600px]'>
+                           <img src={urlFor(image).height(600).url()} />
+                        </div>
+                     ))}
+                  </Carousel>
+               </div>
+               <div className='md:w-1/2 opacity-90 text-center p-4'>
                   {page?.title && (
                      <h1 className='text-3xl mb-10'>{page.title}</h1>
                   )}
@@ -70,7 +94,7 @@ export default function Page({ data, preview }) {
                      <p className='text-xl mb-10'>{page.tagline}</p>
                   )}
                   {page?.text && (
-                     <div className='md:w-3/4'>
+                     <div className=' '>
                         <PortableText
                            value={page.text}
                            components={components}
@@ -80,13 +104,10 @@ export default function Page({ data, preview }) {
                </div>
             </div>
 
-            {page?.mainImage && (
-               <img src={urlFor(page.mainImage).width(200).url()} />
-            )}
-            {page?.carouselImages && (
-               <div>
-                  {page.carouselImages.map((image) => (
-                     <img src={urlFor(image).width(200).url()} />
+            {page?.otherImages && (
+               <div className='grid gap-4 grid-cols-2 md:grid-cols-3 mx-auto justify-items-center my-24'>
+                  {page?.otherImages.images.map((image) => (
+                     <img src={urlFor(image).height(400).url()} />
                   ))}
                </div>
             )}
@@ -117,7 +138,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params, preview = false }) {
-   const query = groq`*[_type == "work" && slug.current == $slug]`;
+   const query = groq`*[_type == "works" && slug.current == $slug]`;
    const queryParams = { slug: params.slug };
    const data = await getClient().fetch(query, queryParams);
 
