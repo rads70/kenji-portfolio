@@ -75,7 +75,7 @@ export default function Page({ data, preview }) {
                <div className='md:mt-24'></div>
             )}
             <div className='flex flex-col md:flex-row mt-4 gap-10'>
-               <div className='md:w-3/4 h-max '>
+               <div className='md:w-3/4 h-max p-4 '>
                   <Carousel
                      autoPlay={true}
                      infiniteLoop={true}
@@ -85,7 +85,7 @@ export default function Page({ data, preview }) {
                   >
                      {page?.carouselImages?.map((image) => (
                         <div
-                           className='h-[300px] md:h-[600px]'
+                           className='h-[300px] md:h-[600px] p-4'
                            key={image._key}
                         >
                            <img
@@ -121,7 +121,7 @@ export default function Page({ data, preview }) {
                   {page?.otherImages?.images.map((image, index) => (
                      <img
                         src={urlFor(image).height(400).url()}
-                        alt=''
+                        alt={image.alt || ""}
                         key={index}
                      />
                   ))}

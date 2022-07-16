@@ -10,7 +10,7 @@ export default function Contact() {
             objectFit='cover'
             alt=''
          />
-         <div className='absolute top-1/3 right-1/3 text-right'>
+         <div className='absolute top-1/3 right-1/4 lg:right-1/3 text-right'>
             <h1 className='text-white text-3xl text font-normal mb-10 '>
                KENJI WILKIE
             </h1>
