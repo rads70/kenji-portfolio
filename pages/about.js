@@ -106,12 +106,12 @@ export default function About({ works }) {
                </div>
             </div>
             <div>
-               <h2 className='text-center text-2xl'>Works</h2>
+               <h2 className='text-center text-2xl text-secondary'>Works</h2>
                <div className='flex justify-center  h-full w-full bg-secondary pb-24 text-secondary text-lg p-4'>
                   <div className='w-full columns-1 md:columns-2 lg:columns-3  text-center'>
                      {works?.map((work) => (
                         <p
-                           className='w-full'
+                           className='w-full text-lg'
                            key={work.title}
                         >{`${work.title} - ${work.year}`}</p>
                      ))}

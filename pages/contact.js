@@ -10,6 +10,7 @@ export default function Contact() {
             objectFit='cover'
             alt=''
             objectPosition='35%'
+            priority={true}
          />
          <div className='absolute top-[42%] lg:top-1/3 right-[14%] lg:right-1/3 text-right'>
             <h1 className='text-white text-2xl lg:text-3xl text font-normal mb-10 '>

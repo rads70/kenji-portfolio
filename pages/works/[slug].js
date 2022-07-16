@@ -85,12 +85,13 @@ export default function Page({ data, preview }) {
                   >
                      {page?.carouselImages?.map((image) => (
                         <div
-                           className='h-[300px] md:h-[600px]'
+                           className='h-[300px] md:h-[600px] flex items-center'
                            key={image._key}
                         >
                            <img
                               src={urlFor(image).height(600).url()}
                               alt={image.alt || ""}
+                              className='object-cover'
                            />
                         </div>
                      ))}
