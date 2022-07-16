@@ -74,7 +74,11 @@ export default function Page({ data, preview }) {
             ) : (
                <div className='md:mt-24'></div>
             )}
-            <div className='flex flex-col md:flex-row mt-4 gap-10'>
+            <div
+               className={`flex ${
+                  page?.videoLink ? "flex-col-reverse" : "flex-col"
+               } md:flex-row mt-4 gap-10`}
+            >
                <div className='md:w-3/4 h-max '>
                   <Carousel
                      autoPlay={true}
