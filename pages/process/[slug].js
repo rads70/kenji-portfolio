@@ -49,8 +49,8 @@ export default function Page({ data, preview }) {
    };
 
    return (
-      <div className='relative bg-black min-h-full'>
-         <main className={`pt-32  mx-auto text-white container p-4`}>
+      <div className='relative bg-secondary min-h-full'>
+         <main className={`pt-32  mx-auto text-secondary container p-4`}>
             {page?.videoLink ? (
                <div className='relative mb-12 md:mb-24'>
                   <div className='relative flex justify-center items-center h-[350px] md:h-[700px] overflow-hidden'>
@@ -83,12 +83,15 @@ export default function Page({ data, preview }) {
                      showThumbs={false}
                      showStatus={false}
                   >
-                     {page?.carouselImages.map((image) => (
+                     {page?.carouselImages?.map((image) => (
                         <div
                            className='h-[300px] md:h-[600px]'
                            key={image._key}
                         >
-                           <img src={urlFor(image).height(600).url()} alt='' />
+                           <img
+                              src={urlFor(image).height(600).url()}
+                              alt={image.alt || ""}
+                           />
                         </div>
                      ))}
                   </Carousel>
@@ -141,17 +144,17 @@ function filterDataToSingleItem(data, preview) {
 }
 
 export async function getStaticPaths() {
-   const allSlugsQuery = groq`*[_type == 'works'][].slug.current`;
+   const allSlugsQuery = groq`*[_type == 'process'][].slug.current`;
    const pages = await getClient().fetch(allSlugsQuery);
 
    return {
-      paths: pages.map((slug) => `/works/${slug}`),
+      paths: pages.map((slug) => `/process/${slug}`),
       fallback: true,
    };
 }
 
 export async function getStaticProps({ params, preview = false }) {
-   const query = groq`*[_type == "works" && slug.current == $slug]`;
+   const query = groq`*[_type == "process" && slug.current == $slug]`;
    const queryParams = { slug: params.slug };
    const data = await getClient().fetch(query, queryParams);
 

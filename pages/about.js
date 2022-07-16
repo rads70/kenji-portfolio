@@ -5,8 +5,8 @@ export default function About({ works }) {
    return (
       <div className='bg-secondary min-h-screen min-w-full pt-32 '>
          <div className='container mx-auto'>
-            <div className='flex flex-col lg:flex-row gap-4 justify-center lg:justify-start h-full w-full bg-secondary pb-6'>
-               <div className='w-full lg:w-1/2 min-w-fit flex justify-center'>
+            <div className='flex flex-col lg:flex-row gap-4  bg-secondary pb-6 mb-12 lg:mb-20'>
+               <div className='w-full lg:w-1/2 flex justify-center p-4'>
                   <Image
                      src='/images/about.jpg'
                      width={500}
@@ -16,7 +16,7 @@ export default function About({ works }) {
                   />
                </div>
 
-               <div className=' p-4 lg:w-1/2 lg:pr-12 text-secondary mt-2'>
+               <div className=' p-4 w-full lg:w-1/2 text-secondary '>
                   <blockquote className=' mb-12 relative p-4 text-xl italic border-l-4 bg-neutral-100  border-neutral-500 quote bg-secondary'>
                      <p className='mb-4'>
                         &ldquo;Kenji Wilkie has his feet firmly planted in
@@ -62,8 +62,8 @@ export default function About({ works }) {
                   </div>
                </div>
             </div>
-            <div className='flex flex-col-reverse lg:flex-row gap-4 justify-center lg:justify-start h-full w-full bg-secondary pb-6 text-secondary text-lg p-4'>
-               <div className='lg:w-1/2'>
+            <div className='flex flex-col-reverse lg:flex-row gap-12 justify-center lg:justify-start mb-12 lg:mb-20 h-full w-full bg-secondary pb-6 text-secondary text-lg p-4'>
+               <div className='lg:w-1/2 px-4'>
                   <p className='mb-4'>
                      To date he has worked with choreographers such as Jiri
                      Kylian, Mats Ek, William Forsythe, Ohad Naharin, Wayne
@@ -93,7 +93,7 @@ export default function About({ works }) {
                      settings.
                   </p>
                </div>
-               <div className='lg:w-1/2 bg-white'>
+               <div className='lg:w-1/2'>
                   <div className='w-full h-full  flex justify-center '>
                      <Image
                         src='/images/contact.jpg'
@@ -107,11 +107,11 @@ export default function About({ works }) {
             </div>
             <div>
                <h2 className='text-center text-2xl'>Works</h2>
-               <div className='flex  gap-4 justify-center  h-full w-full bg-secondary pb-24 text-secondary text-lg p-4'>
-                  <div className='columns-1 md:columns-2 lg:columns-3  text-center'>
+               <div className='flex justify-center  h-full w-full bg-secondary pb-24 text-secondary text-lg p-4'>
+                  <div className='w-full columns-1 md:columns-2 lg:columns-3  text-center'>
                      {works?.map((work) => (
                         <p
-                           className='w-96'
+                           className='w-full'
                            key={work.title}
                         >{`${work.title} - ${work.year}`}</p>
                      ))}

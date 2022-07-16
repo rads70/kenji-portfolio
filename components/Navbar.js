@@ -64,7 +64,7 @@ export default function Navbar() {
             }`}
          >
             <div
-               className='text-4xl text-white absolute top-10 right-4 ml-12'
+               className='text-4xl text-white absolute top-10 right-4 '
                onClick={handleClick}
             >
                &times;
