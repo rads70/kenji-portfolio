@@ -27,6 +27,7 @@ export default function Home() {
                      width={210}
                      height={60}
                      alt='Kenji Wilkie Choreography'
+                     priority={true}
                   />
                </div>
             </header>
