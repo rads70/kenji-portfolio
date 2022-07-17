@@ -27,20 +27,22 @@ export default function Process({ process }) {
                      <Link href={`/process/${process.slug.current}`}>
                         <a className='relative '>
                            {process && (
-                              <div className='relative flex justify-center'>
+                              <div className='relative'>
                                  <Image
                                     src={urlFor(process.mainImage)
                                        .width(600)
                                        .height(600)
                                        .url()}
-                                    className='object-cover hover:scale-105 transition ease-in-out duration-500'
+                                    className='object-cover  '
                                     alt=''
                                     height={600}
                                     width={600}
                                     objectFit='cover'
                                  />
-                                 <div className='z-10 absolute bottom-2 text-slate-200 text-xs md:text-sm lg:text-xl text-center'>
-                                    {process.title}
+                                 <div className='z-10 absolute top-0 h-full w-full text-white text-xs md:text-sm lg:text-xl text-center opacity-0 hover:opacity-90 transition opacity ease-in-out 0.5s'>
+                                    <div className='flex justify-center items-end pb-4 w-full h-full'>
+                                       {process.title}
+                                    </div>
                                  </div>
                               </div>
                            )}

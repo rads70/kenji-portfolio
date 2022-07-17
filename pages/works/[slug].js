@@ -129,7 +129,7 @@ export default function Page({ data, preview }) {
             {page?.otherImages && (
                <div className='grid gap-4 grid-cols-2 md:grid-cols-3 mx-auto justify-items-center my-24'>
                   {page?.otherImages?.images.map((image, index) => (
-                     <div className='w-96' key={index}>
+                     <div className='flex' key={index}>
                         <Image
                            src={urlFor(image).height(400).url()}
                            alt={image.alt || ""}

@@ -126,14 +126,16 @@ export default function Page({ data, preview }) {
             {page?.otherImages && (
                <div className='grid gap-4 grid-cols-2 md:grid-cols-3 mx-auto justify-items-center my-24'>
                   {page?.otherImages?.images.map((image, index) => (
-                     <Image
-                        src={urlFor(image).height(400).url()}
-                        alt={image.alt || ""}
-                        height={400}
-                        width={400}
-                        objectFit='cover'
-                        key={index}
-                     />
+                     <div className='flex'>
+                        <Image
+                           src={urlFor(image).height(400).url()}
+                           alt={image.alt || ""}
+                           height={400}
+                           width={400}
+                           objectFit='cover'
+                           key={index}
+                        />
+                     </div>
                   ))}
                </div>
             )}
