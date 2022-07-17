@@ -5,13 +5,14 @@ import urlFor from "../../lib/imageBuilder";
 import { getClient } from "../../lib/sanity.server";
 import Meta from "../../components/Meta";
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
    const process = await getClient().fetch(
       `*[_type=="process"] | order(year desc)`
    );
 
    return {
       props: { process },
+      revalidate: 10,
    };
 }
 

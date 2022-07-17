@@ -158,7 +158,19 @@ function filterDataToSingleItem(data, preview) {
    return data[0];
 }
 
-export async function getServerSideProps({ params, preview = false }) {
+export async function getStaticPaths() {
+   const query = groq`*[_type == "works"]{slug}`;
+   const slugs = await getClient().fetch(query);
+
+   const paths = slugs.map((slug) => `/works/${slug}`);
+
+   return {
+      paths,
+      fallback: "blocking",
+   };
+}
+
+export async function getStaticProps({ params, preview = false }) {
    const query = groq`*[_type == "works" && slug.current == $slug]`;
    const queryParams = { slug: params.slug };
    const data = await getClient().fetch(query, queryParams);
@@ -172,5 +184,6 @@ export async function getServerSideProps({ params, preview = false }) {
          preview,
          data: { page, query, queryParams },
       },
+      revalidate: 10,
    };
 }

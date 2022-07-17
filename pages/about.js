@@ -16,6 +16,7 @@ export default function About({ works }) {
                         height={800}
                         objectFit='cover'
                         alt='Kenjie wilkie'
+                        priority={true}
                      />
                   </div>
 
@@ -134,8 +135,8 @@ export default function About({ works }) {
 
 export async function getStaticProps() {
    const works = await getClient().fetch(`*[_type=="works"]{title,year}`);
-   console.log(works);
    return {
       props: { works },
+      revalidate: 10,
    };
 }

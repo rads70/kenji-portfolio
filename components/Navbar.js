@@ -38,7 +38,12 @@ export default function Navbar() {
             <div className=''>
                <Link href='/'>
                   <a>
-                     <Image src={logo} width={190} height={50} />
+                     <Image
+                        src={logo}
+                        width={190}
+                        height={50}
+                        alt='Kenji Wilkie'
+                     />
                   </a>
                </Link>
             </div>

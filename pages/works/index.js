@@ -5,11 +5,12 @@ import urlFor from "../../lib/imageBuilder";
 import Meta from "../../components/Meta";
 import { getClient } from "../../lib/sanity.server";
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
    const works = await getClient().fetch(`*[_type=="works"]`);
 
    return {
       props: { works },
+      revalidate: 10,
    };
 }
 
