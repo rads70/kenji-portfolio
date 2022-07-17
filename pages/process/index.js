@@ -1,6 +1,7 @@
 import Link from "next/link";
 import urlFor from "../../lib/imageBuilder";
 import { getClient } from "../../lib/sanity.server";
+import Head from "next/head";
 
 export async function getStaticProps() {
    const process = await getClient().fetch(`*[_type=="process"]`);
@@ -13,6 +14,9 @@ export async function getStaticProps() {
 export default function Process({ process }) {
    return (
       <div className='bg-secondary min-h-screen'>
+         <Head>
+            <title>Process of choreographic work</title>
+         </Head>
          <div className='pt-36 mx-auto p-4 '>
             <div className='grid grid-cols-2 md:grid-cols-3 gap-3 justify-items-center'>
                {process?.map((process) => (

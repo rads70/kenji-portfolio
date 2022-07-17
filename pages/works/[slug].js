@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { groq } from "next-sanity";
+import Meta from "../../components/Meta";
 
 import { usePreviewSubscription } from "../../lib/sanity";
 import { getClient } from "../../lib/sanity.server";
@@ -18,6 +19,7 @@ export default function Page({ data, preview }) {
 
    const page = filterDataToSingleItem(previewData, preview);
 
+   //Styling of block content types
    const components = {
       types: {
          code: (props) => (
@@ -50,6 +52,7 @@ export default function Page({ data, preview }) {
 
    return (
       <div className='relative bg-black min-h-full'>
+         <Meta title={page?.title} />
          <main className={`pt-32  mx-auto text-white container p-4`}>
             {page?.videoLink ? (
                <div className='relative mb-12 md:mb-24'>
