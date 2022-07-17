@@ -39,7 +39,7 @@ export default function Process({ process }) {
                                     width={600}
                                     objectFit='cover'
                                  />
-                                 <div className='z-10 absolute bottom-2 text-slate-200 text-xl '>
+                                 <div className='z-10 absolute bottom-2 text-slate-200 text-xs md:text-sm lg:text-xl text-center'>
                                     {process.title}
                                  </div>
                               </div>
