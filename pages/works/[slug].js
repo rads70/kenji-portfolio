@@ -133,7 +133,6 @@ export default function Page({ data, preview }) {
                         <Image
                            src={urlFor(image).height(400).url()}
                            alt={image.alt || ""}
-                           key={index}
                            height={400}
                            width={400}
                            objectFit='cover'
