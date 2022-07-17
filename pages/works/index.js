@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+
 import urlFor from "../../lib/imageBuilder";
 import Meta from "../../components/Meta";
 import { getClient } from "../../lib/sanity.server";
@@ -23,13 +25,16 @@ export default function Works({ works }) {
                         <Link href={`/works/${work.slug.current}`}>
                            <a className='  '>
                               {work && (
-                                 <img
+                                 <Image
                                     src={urlFor(work.mainImage)
                                        .width(600)
                                        .height(600)
                                        .url()}
                                     className='object-cover hover:scale-105 transition ease-in-out duration-500'
-                                    alt=''
+                                    alt={work.alt || ""}
+                                    height={600}
+                                    width={600}
+                                    objectFit='cover'
                                  />
                               )}
                            </a>

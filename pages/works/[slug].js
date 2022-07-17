@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { groq } from "next-sanity";
-import Meta from "../../components/Meta";
+import Image from "next/image";
 
+import Meta from "../../components/Meta";
 import { usePreviewSubscription } from "../../lib/sanity";
 import { getClient } from "../../lib/sanity.server";
 import { PortableText } from "@portabletext/react";
@@ -95,10 +96,11 @@ export default function Page({ data, preview }) {
                            className='h-[300px] md:h-[600px] flex items-center'
                            key={image._key}
                         >
-                           <img
-                              src={urlFor(image).height(600).url()}
+                           <Image
+                              src={urlFor(image).width(1000).url()}
                               alt={image.alt || ""}
-                              className='object-cover'
+                              objectFit='cover'
+                              layout='fill'
                            />
                         </div>
                      ))}
@@ -127,11 +129,16 @@ export default function Page({ data, preview }) {
             {page?.otherImages && (
                <div className='grid gap-4 grid-cols-2 md:grid-cols-3 mx-auto justify-items-center my-24'>
                   {page?.otherImages?.images.map((image, index) => (
-                     <img
-                        src={urlFor(image).height(400).url()}
-                        alt={image.alt || ""}
-                        key={index}
-                     />
+                     <div className='w-96'>
+                        <Image
+                           src={urlFor(image).height(400).url()}
+                           alt={image.alt || ""}
+                           key={index}
+                           height={400}
+                           width={400}
+                           objectFit='cover'
+                        />
+                     </div>
                   ))}
                </div>
             )}

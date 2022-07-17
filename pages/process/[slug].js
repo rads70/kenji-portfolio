@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { groq } from "next-sanity";
+import Image from "next/image";
 
 import { usePreviewSubscription } from "../../lib/sanity";
 import { getClient } from "../../lib/sanity.server";
@@ -92,10 +93,11 @@ export default function Page({ data, preview }) {
                            className='h-[300px] md:h-[600px] flex items-center'
                            key={image._key}
                         >
-                           <img
-                              src={urlFor(image).height(600).url()}
+                           <Image
+                              src={urlFor(image).width(1000).url()}
                               alt={image.alt || ""}
-                              className='object-cover'
+                              objectFit='cover'
+                              layout='fill'
                            />
                         </div>
                      ))}
@@ -147,16 +149,6 @@ function filterDataToSingleItem(data, preview) {
 
    return data[0];
 }
-/*
-export async function getStaticPaths() {
-   const allSlugsQuery = groq`*[_type == 'process'][].slug.current`;
-   const pages = await getClient().fetch(allSlugsQuery);
-
-   return {
-      paths: pages.map((slug) => `/process/${slug}`),
-      fallback: true,
-   };
-}*/
 
 export async function getServerSideProps({ params, preview = false }) {
    const query = groq`*[_type == "process" && slug.current == $slug]`;
