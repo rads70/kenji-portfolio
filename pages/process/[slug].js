@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { groq } from "next-sanity";
-import Head from "next/head";
 
 import { usePreviewSubscription } from "../../lib/sanity";
 import { getClient } from "../../lib/sanity.server";
@@ -8,6 +7,7 @@ import { PortableText } from "@portabletext/react";
 import { Carousel } from "react-responsive-carousel";
 import urlFor from "../../lib/imageBuilder";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import Meta from "../../components/Meta";
 
 export default function Page({ data, preview }) {
    const [loaded, setLoaded] = useState(false);
@@ -50,10 +50,10 @@ export default function Page({ data, preview }) {
    };
 
    return (
-      <div className='relative bg-secondary min-h-full'>
-         <Head>
+      <div className='relative bg-secondary min-h-screen'>
+         <Meta>
             <title>Process of {page?.title}</title>
-         </Head>
+         </Meta>
          <main className={`pt-32  mx-auto text-secondary container p-4`}>
             {page?.videoLink ? (
                <div className='relative mb-12 md:mb-24'>
@@ -147,7 +147,7 @@ function filterDataToSingleItem(data, preview) {
 
    return data[0];
 }
-
+/*
 export async function getStaticPaths() {
    const allSlugsQuery = groq`*[_type == 'process'][].slug.current`;
    const pages = await getClient().fetch(allSlugsQuery);
@@ -156,7 +156,7 @@ export async function getStaticPaths() {
       paths: pages.map((slug) => `/process/${slug}`),
       fallback: true,
    };
-}
+}*/
 
 export async function getServerSideProps({ params, preview = false }) {
    const query = groq`*[_type == "process" && slug.current == $slug]`;

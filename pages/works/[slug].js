@@ -151,17 +151,7 @@ function filterDataToSingleItem(data, preview) {
    return data[0];
 }
 
-export async function getStaticPaths() {
-   const allSlugsQuery = groq`*[_type == 'works'][].slug.current`;
-   const pages = await getClient().fetch(allSlugsQuery);
-
-   return {
-      paths: pages.map((slug) => `/works/${slug}`),
-      fallback: true,
-   };
-}
-
-export async function getStaticProps({ params, preview = false }) {
+export async function getServerSideProps({ params, preview = false }) {
    const query = groq`*[_type == "works" && slug.current == $slug]`;
    const queryParams = { slug: params.slug };
    const data = await getClient().fetch(query, queryParams);

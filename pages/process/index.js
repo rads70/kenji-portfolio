@@ -3,7 +3,7 @@ import urlFor from "../../lib/imageBuilder";
 import { getClient } from "../../lib/sanity.server";
 import Head from "next/head";
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
    const process = await getClient().fetch(`*[_type=="process"]`);
 
    return {
