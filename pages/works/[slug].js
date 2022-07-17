@@ -159,7 +159,7 @@ function filterDataToSingleItem(data, preview) {
 }
 
 export async function getStaticPaths() {
-   const query = groq`*[_type == "works"]{slug}`;
+   const query = groq`*[_type == "works"][].slug.current`;
    const slugs = await getClient().fetch(query);
 
    const paths = slugs.map((slug) => `/works/${slug}`);
