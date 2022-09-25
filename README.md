@@ -3,6 +3,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ## Project
 
 Portfolio website created with Next js and Sanity as the CMS.
+Tailwindcss
+Sanity.io
 ```
 
 
