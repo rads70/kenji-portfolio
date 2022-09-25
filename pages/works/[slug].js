@@ -8,6 +8,7 @@ import { getClient } from "../../lib/sanity.server";
 import { PortableText } from "@portabletext/react";
 import { Carousel } from "react-responsive-carousel";
 import urlFor from "../../lib/imageBuilder";
+import components from "../../styles/blockContent";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 export default function Page({ data, preview }) {
@@ -38,7 +39,9 @@ export default function Page({ data, preview }) {
          ),
 
          h6: ({ children }) => (
-            <h6 className='text-xs lg:text-sm mb-4 opacity-1'>{children}</h6>
+            <h6 className='text-xs lg:text-sm mb-4 font-roboto-mono opacity-1'>
+               {children}
+            </h6>
          ),
          normal: ({ children }) => (
             <p className='  lg:text-lg leading-6 mb-8'>{children}</p>

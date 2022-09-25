@@ -11,6 +11,11 @@ function Meta({ title, description, keywords }) {
          />
          <meta name='keywords' content={keywords} />
          <meta name='description' content={description} />
+         <link rel='preconnect' href='https://fonts.googleapis.com' />
+         <link
+            href='https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Space+Grotesk:wght@300;400&display=swap'
+            rel='stylesheet'
+         />
          <title>{title}</title>
       </Head>
    );

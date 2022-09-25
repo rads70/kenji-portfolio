@@ -19,6 +19,10 @@ module.exports = {
             "1/2": "50%",
             "3/4": "75%",
          },
+         fontFamily: {
+            "roboto-mono": ["Roboto Mono", "monospace"],
+            "space-grotesk": ["Space Grotesk", "sans-serif"],
+         },
          variants: {
             animation: ["motion-safe"],
          },

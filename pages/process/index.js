@@ -39,8 +39,8 @@ export default function Process({ process }) {
                                     width={600}
                                     objectFit='cover'
                                  />
-                                 <div className='z-10 absolute top-0 h-full w-full text-white text-xs md:text-sm lg:text-xl text-center opacity-0 hover:opacity-90 transition opacity ease-in-out 0.5s'>
-                                    <div className='flex justify-center items-end pb-4 w-full h-full'>
+                                 <div className='z-10 absolute top-0 h-full w-full text-white text-xs md:text-sm lg:text-xl text-center opacity-0 hover:opacity-80 transition opacity ease-in-out 0.5s'>
+                                    <div className='flex justify-center items-end pb-4 w-full h-full font-space-grotesk font-light'>
                                        {process.title}
                                     </div>
                                  </div>
