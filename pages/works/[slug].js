@@ -44,7 +44,9 @@ export default function Page({ data, preview }) {
             </h6>
          ),
          normal: ({ children }) => (
-            <p className='  lg:text-lg leading-6 mb-8'>{children}</p>
+            <p className='  lg:text-lg leading-6 tracking-wide mb-8'>
+               {children}
+            </p>
          ),
          blockquote: ({ children }) => (
             <blockquote className='text-lg lg:text-xl leading-7 mb-6'>
@@ -74,7 +76,9 @@ export default function Page({ data, preview }) {
                         Your browser does not support the video tag
                      </video>
                      <div className='animate-fadeIn'>
-                        <h1 className='text-white text-3xl'>{page?.title}</h1>
+                        <h1 className='text-white text-3xl font-space-grotesk tracking-wide'>
+                           {page?.title}
+                        </h1>
                      </div>
                   </div>
                </div>
@@ -111,15 +115,17 @@ export default function Page({ data, preview }) {
                </div>
                <div className='md:w-1/2 opacity-90 text-center p-4'>
                   {page?.title && (
-                     <h1 className='text-2xl lg:text-3xl mb-10'>
+                     <h1 className='text-2xl lg:text-3xl font-space-grotesk  tracking-wide mb-10'>
                         {page.title}
                      </h1>
                   )}
                   {page?.tagline && (
-                     <p className='text-lg lg:text-xl mb-10'>{page.tagline}</p>
+                     <p className='text-lg lg:text-xl tracking-wide mb-10'>
+                        {page.tagline}
+                     </p>
                   )}
                   {page?.text && (
-                     <div className=' '>
+                     <div className='font-light '>
                         <PortableText
                            value={page.text}
                            components={components}

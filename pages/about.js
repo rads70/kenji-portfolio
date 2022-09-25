@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import Meta from "../components/Meta";
 import { getClient } from "../lib/sanity.server";
 
@@ -120,9 +121,13 @@ export default function About({ works }) {
                      <div className='w-full columns-1 md:columns-2 lg:columns-3  text-center'>
                         {works?.map((work) => (
                            <p
-                              className='w-full text-lg'
+                              className='w-full text-lg hover:text-white'
                               key={work.title}
-                           >{`${work.title} - ${work.year}`}</p>
+                           >
+                              <Link href={`/works/${work.slug}`}>
+                                 <a>{`${work.title} - ${work.year}`}</a>
+                              </Link>
+                           </p>
                         ))}
                      </div>
                   </div>
@@ -134,7 +139,9 @@ export default function About({ works }) {
 }
 
 export async function getStaticProps() {
-   const works = await getClient().fetch(`*[_type=="works"]{title,year}`);
+   const works = await getClient().fetch(
+      `*[_type=="works"]{title,year, "slug": slug.current} | order(year desc)`
+   );
    return {
       props: { works },
       revalidate: 10,

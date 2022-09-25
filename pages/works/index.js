@@ -6,7 +6,9 @@ import Meta from "../../components/Meta";
 import { getClient } from "../../lib/sanity.server";
 
 export async function getStaticProps() {
-   const works = await getClient().fetch(`*[_type=="works"]`);
+   const works = await getClient().fetch(
+      `*[_type=="works"] | order(year desc)`
+   );
 
    return {
       props: { works },
